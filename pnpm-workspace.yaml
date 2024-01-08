@@ -1,0 +1,5 @@
+packages:
+  - cra
+  - vite
+  - next
+  - plain-webpack
