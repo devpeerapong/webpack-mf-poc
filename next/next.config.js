@@ -13,6 +13,7 @@ const nextConfig = {
         plainwebpack: `plainwebpack@http://localhost:4003/public/${
           options.isServer ? "server" : "client"
         }/remoteEntry.js`,
+        rsbuildreact: "rsbuildreact@http://localhost:4004/remoteEntry.js",
       },
       exposes: {
         "./Heading": "./src/components/Heading.js",
@@ -23,11 +24,9 @@ const nextConfig = {
     if (!options.isServer) {
       federationConfig.shared = {
         react: {
-          requiredVersion: false,
           singleton: true,
         },
         "react-dom": {
-          requiredVersion: false,
           singleton: true,
         },
       };

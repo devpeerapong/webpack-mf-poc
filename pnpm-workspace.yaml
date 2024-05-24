@@ -3,3 +3,4 @@ packages:
   - vite
   - next
   - plain-webpack
+  - rsbuild-react

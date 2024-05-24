@@ -1,19 +1,21 @@
 {
-  "name": "cra",
+  "name": "rsbuild-react",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@craco/craco": "^7.1.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-scripts": "5.0.1",
     "serve": "^14.2.3"
   },
+  "devDependencies": {
+    "@module-federation/enhanced": "^0.1.15",
+    "@rsbuild/core": "^0.6.15",
+    "@rsbuild/plugin-react": "^0.6.15"
+  },
   "scripts": {
-    "start": "craco start",
-    "build": "craco build",
-    "eject": "react-scripts eject",
-    "serve": "craco build && serve build -p 4000 -C"
+    "start": "rsbuild dev",
+    "build": "rsbuild build",
+    "serve": "rsbuild build && serve build -p 4004 -C"
   },
   "eslintConfig": {
     "extends": [
@@ -32,8 +34,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@module-federation/enhanced": "^0.1.15"
   }
 }

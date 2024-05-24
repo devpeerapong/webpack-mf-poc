@@ -17,7 +17,7 @@ export default function Home() {
         )
       );
 
-      setRsbuildHeading(lazy(() => import("rsbuildreact/Heading")));
+      setRsbuildHeading(import("rsbuildreact/Heading"));
     }
   }, []);
 
@@ -31,3 +31,7 @@ export default function Home() {
     </div>
   );
 }
+
+export const getServerSideProps = () => ({
+  props: { ssr: true },
+});

@@ -1,4 +1,6 @@
-const { ModuleFederationPlugin } = require("webpack").container;
+const {
+  ModuleFederationPlugin,
+} = require("@module-federation/enhanced/webpack");
 
 module.exports = {
   devServer: {
@@ -18,16 +20,15 @@ module.exports = {
               "nextjs@http://localhost:4002/_next/static/chunks/remoteEntry.js",
             plainwebpack:
               "plainwebpack@http://localhost:4003/public/client/remoteEntry.js",
+            rsbuildreact: "rsbuildreact@http://localhost:4004/remoteEntry.js",
           },
           filename: "remoteEntry.js",
           shared: {
             react: {
               singleton: true,
-              requiredVersion: false,
             },
             "react-dom": {
               singleton: true,
-              requiredVersion: false,
             },
           },
         }),

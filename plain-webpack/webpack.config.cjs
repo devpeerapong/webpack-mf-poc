@@ -1,6 +1,7 @@
 const path = require("path");
-const { ModuleFederationPlugin } = require("webpack").container;
-const { UniversalFederationPlugin } = require("@module-federation/node");
+const {
+  ModuleFederationPlugin,
+} = require("@module-federation/enhanced/webpack");
 
 /** @type {Partial<import('webpack').Configuration>} */
 const sharedConfig = {
@@ -44,6 +45,7 @@ const clientFederationConfig = {
     cra: "cra@http://localhost:4000/remoteEntry.js",
     vite: `promise import("http://localhost:4001/assets/remoteEntry.js")`,
     nextjs: "nextjs@http://localhost:4002/_next/static/chunks/remoteEntry.js",
+    rsbuildreact: "rsbuildreact@http://localhost:4004/remoteEntry.js",
   },
   exposes: {
     "./Heading": "./js/Heading.js",
@@ -51,11 +53,9 @@ const clientFederationConfig = {
   shared: {
     react: {
       singleton: true,
-      requiredVersion: false,
     },
     "react-dom": {
       singleton: true,
-      requiredVersion: false,
     },
   },
 };
@@ -80,7 +80,7 @@ const client = {
 const server = {
   ...sharedConfig,
   name: "server",
-  target: false,
+  target: "async-node",
   entry: {
     bootstrap: path.resolve(__dirname, "./js/bootstrap.js"),
   },
@@ -90,10 +90,12 @@ const server = {
     libraryTarget: "commonjs-module",
   },
   plugins: [
-    new UniversalFederationPlugin({
+    new ModuleFederationPlugin({
       ...clientFederationConfig,
-      isServer: true,
       library: { type: "commonjs-module" },
+      runtimePlugins: [
+        require.resolve("@module-federation/node/runtimePlugin"),
+      ],
     }),
   ],
 };

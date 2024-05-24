@@ -34,15 +34,18 @@ export default defineConfig({
           from: "webpack",
           format: "var",
         },
+        rsbuildreact: {
+          external: "http://localhost:4004/remoteEntry.js",
+          from: "webpack",
+          format: "var",
+        },
       },
       shared: {
         react: {
           singleton: true,
-          requiredVersion: false,
         },
         "react-dom": {
           singleton: true,
-          requiredVersion: false,
         },
       },
     }),
