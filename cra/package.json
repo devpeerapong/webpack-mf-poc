@@ -13,7 +13,7 @@
     "start": "craco start",
     "build": "craco build",
     "eject": "react-scripts eject",
-    "serve": "craco build && serve build -p 4000 -C"
+    "serve": "serve build -p 4000 -C"
   },
   "eslintConfig": {
     "extends": [

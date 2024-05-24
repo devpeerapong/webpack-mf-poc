@@ -15,7 +15,7 @@
   "scripts": {
     "start": "rsbuild dev",
     "build": "rsbuild build",
-    "serve": "rsbuild build && serve build -p 4004 -C"
+    "serve": "serve build -p 4004 -C"
   },
   "eslintConfig": {
     "extends": [

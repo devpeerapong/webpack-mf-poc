@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "serve": "vite build && serve dist -p 4001 -C"
+    "serve": "serve dist -p 4001 -C"
   },
   "dependencies": {
     "react": "^18.3.1",

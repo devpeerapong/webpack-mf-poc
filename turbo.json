@@ -1,0 +1,23 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "pipeline": {
+    "cra#build": {
+      "outputs": ["build"]
+    },
+    "next#build": {
+      "outputs": [".next/**", "!.next/cache/**"]
+    },
+    "plain-webpack#build": {
+      "outputs": ["public"]
+    },
+    "rsbuild-react#build": {
+      "outputs": ["build"]
+    },
+    "vite#build": {
+      "outputs": ["build"]
+    },
+    "serve": {
+      "dependsOn": ["build"]
+    }
+  }
+}
